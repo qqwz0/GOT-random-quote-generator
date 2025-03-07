@@ -1,0 +1,9 @@
+.copyButton {
+    color: white;
+    cursor: pointer;
+  }
+
+.likeButton {
+  color: red;
+  cursor: pointer;
+}
