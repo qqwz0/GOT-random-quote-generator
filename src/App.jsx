@@ -5,6 +5,7 @@ import Quote from './components/Quote';
 import ErrorMessage from './components/ErrorMessage';
 import CopyButton from './components/CopyButton';
 import FavouriteButton from './components/FavouriteButton';
+import House from './components/House'
 import './App.module.css'
 import styles from './App.module.css';
 
@@ -25,6 +26,11 @@ const App = () => {
 
     try {
       const response = await axios.get(API_URL);
+      const favourites = JSON.parse(localStorage.getItem('quotes')) || [];
+
+      const isLiked = favourites.some(q => q.sentence === response.data.sentence);
+      setLikes(isLiked);
+      
       setQuote(response.data);
     } catch (err) {
       console.error('Error fetching quote:', err);
@@ -32,7 +38,6 @@ const App = () => {
     } finally {
       setLoading(false);
       setCopy(false);
-      setLikes(false);
     }
   };
 
@@ -52,6 +57,7 @@ const App = () => {
 
   const addToFavourites = () => {
     if (!quote) return;
+    console.log(quote.character.house.slug)
 
     let quotes = JSON.parse(localStorage.getItem('quotes')) || [];
     
@@ -82,24 +88,48 @@ const App = () => {
   return (
     <div className={styles.pageContainer}>
       <h1>Random GOT quote generator!</h1>
-      <div>
+
+      {/* Flex row: House on the left, Quote on the right */}
+      <div className={styles.mainWrapper}>
+        { !loading && quote?.character?.house?.slug && (
+          <House houseSlug={quote.character.house.slug} />
+        )}
+
         <div className={styles.quoteContainer}>
-          {loading && <FadeLoader
+          {loading && (
+            <FadeLoader
               size={5}
               aria-label="Loading Spinner"
               data-testid="loader"
               speedMultiplier={2}
-            />}
+            />
+          )}
           {error && <ErrorMessage />}
-          {quote && <Quote quote={quote.sentence} author={quote.character.name} house={quote.character.house.name} />}
-          <button className={styles.button} onClick={FetchQuote}>New</button>
+          {quote && (
+            <Quote
+              quote={quote.sentence}
+              author={quote.character.name}
+              house={quote.character.house.name}
+              like={like}
+            />
+          )}
+        
+          <button className={styles.button} onClick={FetchQuote}>
+            New
+          </button>
         </div>
-        <div className={styles.copyToClipboard}>
-          <CopyButton copy={copy} copyToClipboard={copyToClipboard} />
-          <FavouriteButton like={like} addToFavourites={addToFavourites} />
-        </div>
+        { !loading && quote?.character?.house?.slug && (
+          <House houseSlug={quote.character.house.slug} />
+        )}
+      </div>
+
+      {/* Buttons below the main row */}
+      <div className={styles.copyToClipboard}>
+        <CopyButton copy={copy} copyToClipboard={copyToClipboard} />
+        <FavouriteButton like={like} addToFavourites={addToFavourites} />
       </div>
     </div>
+
   );
 }
 

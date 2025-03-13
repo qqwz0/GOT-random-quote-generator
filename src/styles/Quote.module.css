@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+
 .quote {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 20px;
   }
   
   .Pquote {
@@ -9,6 +13,14 @@
     text-align: left;
     font-weight: bold;
     font-size: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 600;
+    display: inline-block; /* Treats the text as a normal string */
+    white-space: normal; /* Allows wrapping */
+    word-wrap: break-word; /* Ensures words break properly */
+    overflow-wrap: break-word;
   }
   
   .author {

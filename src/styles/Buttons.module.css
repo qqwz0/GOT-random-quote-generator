@@ -3,6 +3,14 @@
     cursor: pointer;
   }
 
+.copyButton:hover {
+  color: #848484
+}
+
+.copyButtonActive {
+  color: #848484
+}
+
 .likeButton {
   color: red;
   cursor: pointer;

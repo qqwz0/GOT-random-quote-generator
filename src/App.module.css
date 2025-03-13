@@ -1,30 +1,61 @@
+/* Ensures the entire page is centered both horizontally and vertically */
 .pageContainer {
   display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
   flex-direction: column;
-  height: 80vh;
-  width: 80%;
-}
-
-.quoteContainer {
-  background-color: white;
-  border-radius: 10px;
+  align-items: center; /* center horizontally */
+  justify-content: center; /* center vertically */
   width: 100%;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 800px;
+  margin: 0 auto; /* ensures no side margin issues */
 }
 
-.button {
+/* Holds the House component on the left and Quote container on the right */
+.mainWrapper {
+  display: flex;
+  align-items: center; /* vertically aligns house & quote */
+  justify-content: center; /* horizontally centers them as a group */
+  gap: 30px; /* space between house and quote container */
+}
+
+/* The quote container styling */
+.quoteContainer {
+  background: rgba(245, 222, 179, 0.9);
+  border-radius: 10px;
+  padding: 40px;
+  min-width: 600px; /* or 800px, adjust as needed */
+  text-align: center;
+  background-image: url('./assets/360_F_101721700_HE5ouiYmnmHljXfxTCYrNre4JgxXN64V.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+}
+
+/* Copy & Like buttons below the quote container */
+.copyToClipboard {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  /* If you want the buttons to match the width of quoteContainer: */
+  width: 600px; /* same as min-width of quoteContainer */
+}
+
+/* Example House image styling if needed */
+.houseImage {
+  width: 150px; 
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Button styling */
+/* .button {
   background-color: rgba(23, 198, 254, 1);
   border-radius: 5px;
   color: black;
-  padding: 10px 3rem 10px 3rem;
+  padding: 10px 3rem;
   height: 2.5rem;
-  box-shadow: none;
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -35,12 +66,36 @@
 .button:hover {
   transition: 0.3s;
   background-color: rgb(28, 145, 184);
-  font-size: 16px;
+} */
+
+.button {
+  background: linear-gradient(to bottom, #c9a063, #8b5a2b); /* Gold-brown gradient */
+  
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff3c4; /* Aged parchment text color */
+  padding: 12px 24px;
+  text-shadow: 2px 2px 4px #402209; /* Engraved effect */
+  cursor: pointer;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3), 
+              0 4px 10px rgba(0, 0, 0, 0.5); /* Inner glow & shadow */
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
 
-.copyToClipboard {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  gap: 10px;
+/* Hover Effect: Glowing & Raised */
+.button:hover {
+  background: linear-gradient(to bottom, #d4ad77, #9c6a3f);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 
+              inset 0 2px 5px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to bottom, #d4af37, #a67c00);
+  transform: scale(1.05);
+}
+
+/* Active Effect: Pressed Down */
+.button:active {
+  background: linear-gradient(to bottom, #9c6a3f, #5a3e1b);
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
 }
