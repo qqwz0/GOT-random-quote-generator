@@ -1,101 +1,219 @@
-/* Ensures the entire page is centered both horizontally and vertically */
+/* ===== Структура сторінки ===== */
 .pageContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* center horizontally */
-  justify-content: center; /* center vertically */
-  width: 100%;
-  margin: 0 auto; /* ensures no side margin issues */
+  align-items: center;
+  justify-content: center;
+  /* width: 100%; */
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* Holds the House component on the left and Quote container on the right */
 .mainWrapper {
   display: flex;
-  align-items: center; /* vertically aligns house & quote */
-  justify-content: center; /* horizontally centers them as a group */
-  gap: 30px; /* space between house and quote container */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
-/* The quote container styling */
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.settings {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 130px;
+}
+
 .quoteContainer {
   background: rgba(245, 222, 179, 0.9);
   border-radius: 10px;
   padding: 40px;
-  min-width: 600px; /* or 800px, adjust as needed */
   text-align: center;
-  background-image: url('./assets/360_F_101721700_HE5ouiYmnmHljXfxTCYrNre4JgxXN64V.jpg');
+  background-image: url('./assets/images/360_F_101721700_HE5ouiYmnmHljXfxTCYrNre4JgxXN64V.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   max-width: 800px;
+  width: 80%;
+  margin: 0 auto;
+  min-width: 700px;
 }
 
-/* Copy & Like buttons below the quote container */
+/* Якщо white-space: nowrap не є критичним, його краще прибрати для адаптивності */
+.pageHeader {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  z-index: 3;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+}
+
+/* ===== Кнопки та зображення ===== */
 .copyToClipboard {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 20px;
-
-  /* If you want the buttons to match the width of quoteContainer: */
-  width: 600px; /* same as min-width of quoteContainer */
+  width: 100%;
 }
 
-/* Example House image styling if needed */
 .houseImage {
-  width: 150px; 
+  width: 120px;
   height: auto;
   flex-shrink: 0;
 }
 
-/* Button styling */
-/* .button {
-  background-color: rgba(23, 198, 254, 1);
-  border-radius: 5px;
-  color: black;
-  padding: 10px 3rem;
-  height: 2.5rem;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.button:hover {
-  transition: 0.3s;
-  background-color: rgb(28, 145, 184);
-} */
-
 .button {
-  background: linear-gradient(to bottom, #c9a063, #8b5a2b); /* Gold-brown gradient */
-  
+  background: linear-gradient(to bottom, #c9a063, #8b5a2b);
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: #fff3c4; /* Aged parchment text color */
+  color: #fff3c4;
   padding: 12px 24px;
-  text-shadow: 2px 2px 4px #402209; /* Engraved effect */
+  text-shadow: 2px 2px 4px #402209;
   cursor: pointer;
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3), 
-              0 4px 10px rgba(0, 0, 0, 0.5); /* Inner glow & shadow */
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3),
+              0 4px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
   position: relative;
 }
 
-/* Hover Effect: Glowing & Raised */
 .button:hover {
-  background: linear-gradient(to bottom, #d4ad77, #9c6a3f);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 
-              inset 0 2px 5px rgba(255, 255, 255, 0.5);
   background: linear-gradient(to bottom, #d4af37, #a67c00);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+              inset 0 2px 5px rgba(255, 255, 255, 0.5);
   transform: scale(1.05);
 }
 
-/* Active Effect: Pressed Down */
 .button:active {
   background: linear-gradient(to bottom, #9c6a3f, #5a3e1b);
   box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Адаптивність ===== */
+@media (max-width: 1200px) {
+  .mainWrapper {
+    flex-direction: row; /* Залишаємо горизонтальне розташування для великих екранів */
+  }
+
+  .quoteContainer {
+    min-width: 500px;
+   } /* Збільшуємо мінімальну ширину контейнера цитати */
+}
+
+@media (max-width: 992px) {
+  .mainWrapper {
+    flex-direction: row; /* Залишаємо горизонтальне розташування для середніх екранів */
+  }
+
+  .houseImage {
+    width: 100px; /* Зменшуємо розмір зображення */
+  }
+
+  .quoteContainer {
+    width: 77%; /* Збільшуємо ширину контейнера цитати */
+    padding: 20px;
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainWrapper {
+    flex-direction: column; /* Змінюємо напрямок на стовпчик для менших екранів */
+    align-items: center; /* Центруємо елементи */
+    gap: 10px
+  }
+
+  .pageContainer {
+    padding: 0;
+  }
+
+  .houseImage {
+    width: 80px; /* Зменшуємо розмір зображення на менших екранах */
+  }
+
+  /* Hide all images except the first one */
+  .mainWrapper .houseImage {
+    display: none; /* Hide all images */
+  }
+
+  .mainWrapper .houseImage:first-child {
+    display: block; /* Show only the first image */
+  }
+
+  .button {
+    font-size: 0.9rem; /* Зменшуємо розмір шрифту кнопки */
+    padding: 10px 20px; /* Зменшуємо відступи кнопки */
+  }
+
+  .quoteContainer {
+    min-width: 500px;
+   } /* Збільшуємо мінімальну ширину контейнера цитати */
+
+   .settings {
+    min-width: 80px;
+   }
+}
+
+@media (max-width: 610px) {
+  .mainWrapper {
+    flex-direction: column; /* Змінюємо напрямок на стовпчик для менших екранів */
+    align-items: center; /* Центруємо елементи */
+    gap: 10px
+  }
+
+  .houseImage {
+    width: 80px; /* Зменшуємо розмір зображення на менших екранах */
+  }
+
+  /* Hide all images except the first one */
+  .mainWrapper .houseImage {
+    display: none; /* Hide all images */
+  }
+
+  .mainWrapper .houseImage:first-child {
+    display: block; /* Show only the first image */
+  }
+
+  .button {
+    font-size: 0.9rem; /* Зменшуємо розмір шрифту кнопки */
+    padding: 10px 20px; /* Зменшуємо відступи кнопки */
+  }
+
+  .pageHeader {
+    font-size: 2rem; /* Зменшуємо шрифт заголовка для менших екранів */
+  }
+
+  .quoteContainer {
+    min-width: 400px;
+   } /* Збільшуємо мінімальну ширину контейнера цитати */
+}
+
+@media (max-width: 576px) {
+  .button {
+    font-size: 0.8rem; /* Додаткове зменшення розміру шрифту для мобільних екранів */
+    padding: 8px 16px; /* Додаткове зменшення відступів кнопки */
+  }
+
+  .quoteContainer {
+    min-width: 300px;
+   }
+  
+   .settings {
+    min-width: 45px;
+   }
 }

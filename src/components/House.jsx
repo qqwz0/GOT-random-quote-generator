@@ -1,19 +1,19 @@
 import React from 'react'
 
-import baelish from '../assets/House_Baelish.svg';
-import baratheon from '../assets/House_Baratheon.svg';
-import bolton from '../assets/House_Bolton.svg';
-import clegane from '../assets/House_Clegane.svg';
-import frey from '../assets/House_Frey.svg';
-import greyjoy from '../assets/House_Greyjoy.svg';
-import lannister from '../assets/House_Lannister.svg';
-import martell from '../assets/House_Martell.svg';
-import mormont from '../assets/House_Mormont.svg';
-import stark from '../assets/House_Stark.svg';
-import targaryen from '../assets/House_Targaryen.svg';
-import tarly from '../assets/House_Tarly.svg';
-import tarth from '../assets/House_Tarth.svg';
-import tyrell from '../assets/House_Tyrell.svg';
+import baelish from '../assets/images/House_Baelish.svg';
+import baratheon from '../assets/images/House_Baratheon.svg';
+import bolton from '../assets/images/House_Bolton.svg';
+import clegane from '../assets/images/House_Clegane.svg';
+import frey from '../assets/images/House_Frey.svg';
+import greyjoy from '../assets/images/House_Greyjoy.svg';
+import lannister from '../assets/images/House_Lannister.svg';
+import martell from '../assets/images/House_Martell.svg';
+import mormont from '../assets/images/House_Mormont.svg';
+import stark from '../assets/images/House_Stark.svg';
+import targaryen from '../assets/images/House_Targaryen.svg';
+import tarly from '../assets/images/House_Tarly.svg';
+import tarth from '../assets/images/House_Tarth.svg';
+import tyrell from '../assets/images/House_Tyrell.svg';
 
 import styles from '../App.module.css';
 import { motion } from "framer-motion"; 

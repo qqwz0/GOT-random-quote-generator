@@ -6,17 +6,20 @@ import ErrorMessage from './components/ErrorMessage';
 import CopyButton from './components/CopyButton';
 import FavouriteButton from './components/FavouriteButton';
 import House from './components/House'
+import BackgroundMusic from './components/BackgroundMusic';
+import Settings from './components/Settings';
 import './App.module.css'
 import styles from './App.module.css';
 
-const API_URL = 'https://api.gameofthronesquotes.xyz/v1/random'
+const API_URL = 'https://api.gameofthronesquotes.xyz/v1'
 
 const App = () => {
   const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [copy, setCopy] = useState(false)
+  const [copy, setCopy] = useState(false) 
   const [like, setLikes] = useState(false)
+  const [quoteSettings, setQuoteSettings] = useState('random');
   const initialized = useRef(false);
 
   const FetchQuote = async () => {
@@ -25,7 +28,7 @@ const App = () => {
     setError(false);
 
     try {
-      const response = await axios.get(API_URL);
+      const response = await axios.get(`${API_URL}/${quoteSettings}`);
       const favourites = JSON.parse(localStorage.getItem('quotes')) || [];
 
       const isLiked = favourites.some(q => q.sentence === response.data.sentence);
@@ -87,9 +90,15 @@ const App = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <h1>Random GOT quote generator!</h1>
+      <div className={styles.settings}>
+        <BackgroundMusic />
+        <Settings setQuoteSettings={setQuoteSettings} />
+      </div>
 
-      {/* Flex row: House on the left, Quote on the right */}
+      <div className={styles.headerWrapper}>
+        <h1 className={styles.pageHeader}>Random GOT quote generator!</h1>
+      </div>
+
       <div className={styles.mainWrapper}>
         { !loading && quote?.character?.house?.slug && (
           <House houseSlug={quote.character.house.slug} />
@@ -123,7 +132,6 @@ const App = () => {
         )}
       </div>
 
-      {/* Buttons below the main row */}
       <div className={styles.copyToClipboard}>
         <CopyButton copy={copy} copyToClipboard={copyToClipboard} />
         <FavouriteButton like={like} addToFavourites={addToFavourites} />

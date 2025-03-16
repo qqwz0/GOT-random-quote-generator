@@ -1,28 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-
-
+/* ===== Стилі для цитат ===== */
 .quote {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.Pquote {
+  align-self: flex-start;
+  text-align: left;
+  font-size: 1.6rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.Pquote span {
+  display: inline-block;
+}
+
+.author {
+  align-self: flex-end;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* ===== Адаптивність для цитат ===== */
+@media (max-width: 1200px) {
   .Pquote {
-    align-self: flex-start;
-    text-align: left;
-    font-weight: bold;
-    font-size: 24px;
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-style: italic;
-    font-weight: 600;
-    display: inline-block; /* Treats the text as a normal string */
-    white-space: normal; /* Allows wrapping */
-    word-wrap: break-word; /* Ensures words break properly */
-    overflow-wrap: break-word;
+    font-size: 1.5rem; /* Зменшуємо шрифт для великих екранів */
   }
-  
+
   .author {
-    align-self: flex-end;
+    font-size: 1.1rem; /* Зменшуємо шрифт для автора */
   }
+}
+
+@media (max-width: 992px) {
+  .Pquote {
+    font-size: 1.4rem; /* Зменшуємо шрифт для середніх екранів */
+  }
+
+  .author {
+    font-size: 1rem; /* Зменшуємо шрифт для автора */
+  }
+}
+
+@media (max-width: 768px) {
+  .Pquote {
+    font-size: 1.2rem; /* Зменшуємо шрифт для менших екранів */
+  }
+
+  .author {
+    font-size: 0.9rem; /* Зменшуємо шрифт для автора */
+  }
+}
+
+@media (max-width: 576px) {
+  .Pquote {
+    font-size: 1rem; /* Зменшуємо шрифт для мобільних екранів */
+  }
+
+  .author {
+    font-size: 0.8rem; /* Зменшуємо шрифт для автора */
+  }
+}
